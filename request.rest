@@ -1,0 +1,16 @@
+
+### get key
+GET http://localhost:8080/steve
+
+### set key
+POST http://localhost:8080/steve
+Content-Type: text/plain
+
+I love you Steve.
+
+### home
+GET http://localhost:8080
+
+
+### get all keys
+GET http://localhost:8080/keys
