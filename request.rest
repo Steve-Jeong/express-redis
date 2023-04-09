@@ -1,12 +1,21 @@
 
 ### get key
-GET http://localhost:8080/steve
+GET http://localhost:8080/salary%20high
+
+### get key
+GET http://localhost:8080/"extreme rejoice"
 
 ### set key
-POST http://localhost:8080/steve
+POST http://localhost:8080/salary%20high
 Content-Type: text/plain
 
-I love you Steve.
+the higher, the better!
+
+### set key
+POST http://localhost:8080/"extreme rejoice"
+Content-Type: text/plain
+
+Thank Jesus
 
 ### home
 GET http://localhost:8080

@@ -1,14 +1,14 @@
 import express from 'express'
 import redis from "redis"
 
-const port = process.env.PORT || 8080
 
 const app = express()
 
 app.use(express.text())
 
+const redisUrl = process.env.REDIS_URL
 const client = redis.createClient({
-  url: "redis://localhost:6379"
+  url: redisUrl
 });
 
 client.on("error", function(error) {
@@ -44,18 +44,20 @@ app.get("/:key", async (req, res) => {
 
 app.post("/:key", async (req, res) => {
   const key = req.params.key
-  console.log('key : ', key)
+  // console.log('key : ', key)
   const data = req.body
-  console.log('data : ', data)
+  // console.log('data : ', data)
   try {
     const value = await client.set(key, data)
     res.send(value)
-
+    
   } catch(err) {
     res.send(err)
   }
 })
 
+
+const port = process.env.PORT || 8080
 app.listen(port, () => {
   console.log("app is listening on port " + port)
 })
