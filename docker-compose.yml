@@ -2,6 +2,7 @@ version: '3.4'
 services:
   web:
     image: express-app
+    container_name: web
     build:
       context: .
       dockerfile: ./Dockerfile
@@ -10,8 +11,11 @@ services:
       REDIS_URL: redis://redis:6379
     ports:
       - 8080:8080
+    network_mode: bridge
+
   redis:
     image: redis
+    container_name: redis
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -22,3 +26,4 @@ services:
       - .db:/data
     restart: always
     entrypoint: redis-server --appendonly yes
+    network_mode: bridge
