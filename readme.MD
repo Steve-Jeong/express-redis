@@ -17,3 +17,10 @@ network_mode: bridge를 넣었는데도 안된다.
 docker logs redis -f로 보면 redis는 정상 작동하는 것 같다.
 docker logs web -f로 보면 여전히  redis 접속을 못한다.
 
+4/11
+도커 컴포즈를 사용하지 않고,
+docker run -p 6379:6379 -d --name redis redis:latest
+-> redis:7.0.10 컨테이너가 만들어졌다.
+redis 컨테이너만 실행한 상태에서 프로그램이 잘 돌아감.
+
+
